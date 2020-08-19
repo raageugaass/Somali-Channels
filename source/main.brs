@@ -19,8 +19,9 @@ sub Main(args as Dynamic)
     m.global.addField("adTracker", "int", true)
     m.global.adTracker =0
     
-    dev = createObject("roDeviceInfo")
-    model = (Left(dev.GetModel(),1)).toInt()
+    m.dev = createObject("roDeviceInfo")
+
+    model = (Left(m.dev.GetModel(),1)).toInt()
     if model < 4
         m.global.Model = 1
     end if
@@ -65,8 +66,7 @@ Sub RAF()
     curPos = m.Video.position
     m.Video.control = "stop"
     adIface = Roku_Ads()
-    adIface.setDebugOutput(true)
-    adIface.setAdUrl()
+    adIface.setAdUrl(getAdID())
     adIface.setAdPrefs(true,2)
     adPods = adIface.getAds()
     playContent = true
@@ -87,6 +87,15 @@ Sub RAF()
         m.RowList.setFocus(true)
     end if
 End Sub
+
+Function getAdID() as String
+    adID = ""
+    if not m.dev.isRIDADisabled()
+        adID = m.dev.GetRIDA()
+    end if
+
+    return adID
+End Function
 
 Function getDeepLinks(args) as Object
     deeplink = Invalid

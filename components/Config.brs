@@ -17,12 +17,12 @@
 '}
 
 'To edit the feed
-'GO TO : https://jsonblob.com/cbf3f855-e19d-11ea-ad25-d54d23b9b7d8
+'GO TO : https://jsonblob.com/380ccbf6-e238-11ea-b0bf-334f0ba01f12
 
 
 Function loadConfig()
     universaltvUrl = "https://api.boxcast.com/channels/rsimwgxwmgs7awm2iv6k/broadcasts?q=timeframe%3Arelevant&s=-starts_at&l=1"
-    feedUrl = "https://jsonblob.com/api/jsonBlob/cbf3f855-e19d-11ea-ad25-d54d23b9b7d8"
+    feedUrl = "https://jsonblob.com/api/jsonBlob/380ccbf6-e238-11ea-b0bf-334f0ba01f12"
     searchRequest = CreateObject("roUrlTransfer")
     searchRequest.SetURL(feedUrl)
     searchRequest.SetCertificatesFile("common:/certs/ca-bundle.crt")
